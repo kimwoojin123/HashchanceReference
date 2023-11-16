@@ -14,12 +14,20 @@
   <div id="hashpage"></div>
   <script type="module" src="app.js"></script>
   <script>
+    
+    
+    // 해쉬변경 이벤트
     window.addEventListener("hashchange", () => {
+      // window.location.hash는 현재 페이지의 해쉬부분을 나타내는 값
       const hash = window.location.hash;
+      // substring(number)은 해당 숫자위치부터 문자열을 읽어옴
       const pageName = hash.substring(1);
+      // renderPage의 매개변수로 #를 제외한 해쉬명을 넣어준다.
       renderPage(pageName);
     });
 
+
+    // render페이지의 매개변수로 사용하기위해 key값을 해쉬명과 일치시켜준다.
     const pages = {
       woojin: "김우진",
       seunghee: "방승희",
@@ -27,11 +35,14 @@
       youngsik: "정영식",
     };
 
+
+    // 렌더링시 동작 함수
     function renderPage(pageName) {
       const root = document.getElementById("root");
       const hashpage = document.getElementById("hashpage");
 
       root.style.display = "none";
+      // hash페이지의 내용으로 pages객체의 key값에 접근
       hashpage.innerHTML = pages[pageName];
 }
 
